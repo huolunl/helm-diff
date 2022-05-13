@@ -2,6 +2,7 @@ package cmd
 
 import (
 	"fmt"
+	helmv3 "github.com/huolunl/helm/v3/pkg/helm"
 	"os"
 	"os/exec"
 	"path/filepath"
@@ -85,7 +86,7 @@ func expandTLSPaths() {
 
 func outputWithRichError(cmd *exec.Cmd) ([]byte, error) {
 	debugPrint("Executing %s", strings.Join(cmd.Args, " "))
-	output, err := cmd.Output()
+	output, err := helmv3.Exec(false, cmd.Args...)
 	if exitError, ok := err.(*exec.ExitError); ok {
 		return output, fmt.Errorf("%s: %s", exitError.Error(), string(exitError.Stderr))
 	}

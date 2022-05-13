@@ -30,7 +30,10 @@ require (
 	sigs.k8s.io/yaml v1.2.0
 )
 
-require github.com/google/go-cmp v0.5.5
+require (
+	github.com/google/go-cmp v0.5.5
+	github.com/huolunl/helm/v3 v3.6.10
+)
 
 require (
 	cloud.google.com/go v0.54.0 // indirect
@@ -47,6 +50,7 @@ require (
 	github.com/Masterminds/semver/v3 v3.1.1 // indirect
 	github.com/Masterminds/sprig/v3 v3.2.2 // indirect
 	github.com/Masterminds/squirrel v1.5.0 // indirect
+	github.com/Masterminds/vcs v1.13.1 // indirect
 	github.com/Microsoft/go-winio v0.4.16 // indirect
 	github.com/Microsoft/hcsshim v0.8.14 // indirect
 	github.com/PuerkitoBio/purell v1.1.1 // indirect
@@ -57,6 +61,7 @@ require (
 	github.com/containerd/cgroups v0.0.0-20200531161412-0dbf7f05ba59 // indirect
 	github.com/containerd/containerd v1.4.11 // indirect
 	github.com/containerd/continuity v0.0.0-20201208142359-180525291bb7 // indirect
+	github.com/cpuguy83/go-md2man/v2 v2.0.0 // indirect
 	github.com/cyphar/filepath-securejoin v0.2.2 // indirect
 	github.com/davecgh/go-spew v1.1.1 // indirect
 	github.com/deislabs/oras v0.11.1 // indirect
@@ -77,6 +82,7 @@ require (
 	github.com/go-openapi/spec v0.19.5 // indirect
 	github.com/go-openapi/swag v0.19.5 // indirect
 	github.com/gobwas/glob v0.2.3 // indirect
+	github.com/gofrs/flock v0.8.0 // indirect
 	github.com/gogo/protobuf v1.3.2 // indirect
 	github.com/golang/groupcache v0.0.0-20200121045136-8c9f03a8e57e // indirect
 	github.com/golang/protobuf v1.5.0 // indirect
@@ -120,7 +126,9 @@ require (
 	github.com/prometheus/procfs v0.2.0 // indirect
 	github.com/rubenv/sql-migrate v0.0.0-20200616145509-8d140a17f351 // indirect
 	github.com/russross/blackfriday v1.5.2 // indirect
+	github.com/russross/blackfriday/v2 v2.0.1 // indirect
 	github.com/shopspring/decimal v1.2.0 // indirect
+	github.com/shurcooL/sanitized_anchor_name v1.0.0 // indirect
 	github.com/sirupsen/logrus v1.8.1 // indirect
 	github.com/spf13/cast v1.3.1 // indirect
 	github.com/xeipuuv/gojsonpointer v0.0.0-20180127040702-4e3ac2762d5f // indirect
