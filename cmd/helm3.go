@@ -3,6 +3,7 @@ package cmd
 import (
 	"bytes"
 	"fmt"
+	helmv3 "github.com/huolunl/helm/v3/pkg/helm"
 	"io/ioutil"
 	"os"
 	"os/exec"
@@ -19,11 +20,9 @@ var (
 )
 
 func compatibleHelm3Version() error {
-	cmd := exec.Command(os.Getenv("HELM_BIN"), "version")
-	debugPrint("Executing %s", strings.Join(cmd.Args, " "))
-	output, err := cmd.CombinedOutput()
+	output, err := helmv3.Exec(false, "version")
 	if err != nil {
-		return fmt.Errorf("Failed to run `%s version`: %v", os.Getenv("HELM_BIN"), err)
+		return fmt.Errorf("Failed to run helm version`: %v", err)
 	}
 	versionOutput := string(output)
 
@@ -208,11 +207,16 @@ func (d *diffCmd) template(isUpgrade bool) ([]byte, error) {
 }
 
 func (d *diffCmd) writeExistingValues(f *os.File) error {
-	cmd := exec.Command(os.Getenv("HELM_BIN"), "get", "values", d.release, "--all", "--output", "yaml")
-	debugPrint("Executing %s", strings.Join(cmd.Args, " "))
+	output, err := helmv3.Exec(false, "get", "values", d.release, "--all", "--output", "yaml")
+	if err != nil {
+		return err
+	}
 	defer f.Close()
-	cmd.Stdout = f
-	return cmd.Run()
+	_, err = f.Write(output)
+	if err != nil {
+		return err
+	}
+	return nil
 }
 
 func extractManifestFromHelmUpgradeDryRunOutput(s []byte, noHooks bool) []byte {

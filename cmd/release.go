@@ -8,8 +8,8 @@ import (
 	"github.com/spf13/cobra"
 	"k8s.io/helm/pkg/helm"
 
-	"github.com/databus23/helm-diff/v3/diff"
-	"github.com/databus23/helm-diff/v3/manifest"
+	"github.com/huolunl/helm-diff/v3/diff"
+	"github.com/huolunl/helm-diff/v3/manifest"
 )
 
 type release struct {
