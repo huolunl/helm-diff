@@ -9,8 +9,8 @@ import (
 	"github.com/spf13/cobra"
 	"k8s.io/helm/pkg/helm"
 
-	"github.com/zhangfane/helm-diff/v3/diff"
-	"github.com/zhangfane/helm-diff/v3/manifest"
+	"github.com/huolunl/helm-diff/v3/diff"
+	"github.com/huolunl/helm-diff/v3/manifest"
 )
 
 type rollback struct {

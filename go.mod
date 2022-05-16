@@ -1,4 +1,4 @@
-module github.com/zhangfane/helm-diff/v3
+module github.com/huolunl/helm-diff/v3
 
 go 1.17
 
