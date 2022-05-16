@@ -6,8 +6,6 @@ import (
 	"testing"
 
 	"github.com/stretchr/testify/require"
-
-	. "github.com/databus23/helm-diff/v3/manifest"
 )
 
 func foundObjects(result map[string]*MappingResult) []string {
