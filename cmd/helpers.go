@@ -85,8 +85,8 @@ func expandTLSPaths() {
 }
 
 func outputWithRichError(cmd *exec.Cmd) ([]byte, error) {
-	debugPrint("Executing %s", strings.Join(cmd.Args, " "))
-	output, err := helmv3.Exec(false, cmd.Args...)
+	debugPrint("Executing %s", strings.Join(cmd.Args[1:len(cmd.Args)], " "))
+	output, err := helmv3.Exec(false, cmd.Args[1:len(cmd.Args)]...)
 	if exitError, ok := err.(*exec.ExitError); ok {
 		return output, fmt.Errorf("%s: %s", exitError.Error(), string(exitError.Stderr))
 	}
