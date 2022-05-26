@@ -3,7 +3,7 @@ package cmd
 import (
 	"bytes"
 	"fmt"
-	helmv3 "github.com/huolunl/helm/v3/pkg/helm"
+	helmv3 "github.com/huolunl/helm/v3/pkg/diff"
 	"io/ioutil"
 	"os"
 	"os/exec"
