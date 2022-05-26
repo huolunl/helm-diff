@@ -2,7 +2,7 @@ package cmd
 
 import (
 	"fmt"
-	helmv3 "github.com/huolunl/helm/v3/pkg/helm"
+	helmv3 "github.com/huolunl/helm/v3/pkg/diff"
 	"os"
 	"os/exec"
 	"path/filepath"
