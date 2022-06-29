@@ -4,6 +4,7 @@ import (
 	"bytes"
 	"encoding/json"
 	"fmt"
+	"io"
 	"log"
 	"os"
 	"strings"
@@ -78,7 +79,7 @@ perform.
 var envSettings = cli.New()
 var yamlSeperator = []byte("\n---\n")
 
-func newChartCommand() *cobra.Command {
+func newChartCommand(out io.Writer) *cobra.Command {
 	diff := diffCmd{
 		namespace: os.Getenv("HELM_NAMESPACE"),
 	}
@@ -133,7 +134,7 @@ func newChartCommand() *cobra.Command {
 			diff.release = args[0]
 			diff.chart = args[1]
 			if isHelm3() {
-				return diff.runHelm3()
+				return diff.runHelm3(out)
 			}
 			if diff.client == nil {
 				diff.client = createHelmClient()
@@ -188,7 +189,7 @@ func newChartCommand() *cobra.Command {
 
 }
 
-func (d *diffCmd) runHelm3() error {
+func (d *diffCmd) runHelm3(out io.Writer) error {
 
 	if err := compatibleHelm3Version(); err != nil {
 		return err
@@ -262,7 +263,7 @@ func (d *diffCmd) runHelm3() error {
 	} else {
 		newSpecs = manifest.Parse(string(installManifest), d.namespace, d.normalizeManifests, helm3TestHook, helm2TestSuccessHook)
 	}
-	seenAnyChanges := diff.Manifests(currentSpecs, newSpecs, &d.Options, os.Stdout)
+	seenAnyChanges := diff.Manifests(currentSpecs, newSpecs, &d.Options, out)
 
 	if d.detailedExitCode && seenAnyChanges {
 		return Error{

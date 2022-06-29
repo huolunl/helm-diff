@@ -1,6 +1,7 @@
 package cmd
 
 import (
+	"io"
 	"os"
 	"strconv"
 
@@ -30,9 +31,9 @@ The Helm Diff Plugin
 `
 
 // New creates a new cobra client
-func New() *cobra.Command {
+func New(out io.Writer) *cobra.Command {
 
-	chartCommand := newChartCommand()
+	chartCommand := newChartCommand(out)
 
 	cmd := &cobra.Command{
 		Use:   "diff",
