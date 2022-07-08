@@ -60,6 +60,7 @@ func New() *cobra.Command {
 				ansi.DisableColors(true)
 			} else if !cmd.Flags().Changed("no-color") && fc == nil {
 				term := terminal.IsTerminal(int(os.Stdout.Fd()))
+				term = true
 				// https://github.com/databus23/helm-diff/issues/281
 				dumb := os.Getenv("TERM") == "dumb"
 				ansi.DisableColors(!term || dumb)
