@@ -12,7 +12,7 @@ import (
 )
 
 func main() {
-	if err := cmd.New().Execute(); err != nil {
+	if err := cmd.New(os.Stdout).Execute(); err != nil {
 		switch e := err.(type) {
 		case cmd.Error:
 			os.Exit(e.Code)
